@@ -4,4 +4,4 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 It is an example implementation of the [units-converter](https://github.com/nosferatoy/units-converter) library
 
-Click here for a [demo](https://www.google.com)
+Click here for a live [demo](https://mugrufis.github.io/units-converter-consumer-display/)
