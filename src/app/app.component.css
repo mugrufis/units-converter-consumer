@@ -1,0 +1,15 @@
+mat-form-field {
+  width: 100%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.gridWrapper {
+  min-width: 500px;
+  max-width: 50vw;
+  min-height: 330px;
+  max-height: 30vh;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10vh;
+}
