@@ -7,18 +7,18 @@ import * as Converter from 'units-converter';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  private functions: string[] = [];
-  private units: any[] = [];
-  private fromUnit: string;
-  private toUnit: string;
-  private selected: string;
-  private fromValue: number;
-  private toValue: number;
+  public functions: string[] = [];
+  public units: any[] = [];
+  public fromUnit: string;
+  public toUnit: string;
+  public selected: string;
+  public fromValue: number;
+  public toValue: number;
 
   // Where True is for fromValue and False for toValue
   private lastChanged = true;
 
-  private onSelectionChangeType() {
+  public onSelectionChangeType() {
     this.units = Converter[this.selected]().list();
     this.fromUnit = this.units[0].unit;
     this.toUnit = this.units[1].unit;
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     this.toValue = Converter[this.selected](this.fromValue).from(this.fromUnit).to(this.toUnit).value;
   }
 
-  private onSelectionChangeFrom(newValue?) {
+  public onSelectionChangeFrom(newValue?) {
 
     if (newValue && newValue.target.value as number) {
 
@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
   }
 
 
-  private onSelectionChangeTo(newValue?) {
+  public onSelectionChangeTo(newValue?) {
 
     if (newValue && newValue.target.value as number) {
       this.fromValue = (newValue.target.value as number > 1) ? newValue.target.value.replace(/^0+/, '') as number : newValue.target.value as number;
@@ -52,7 +52,5 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.functions = Object.keys(Converter);
-
-    console.log(Converter[this.functions[1]]().list());
   }
 }
