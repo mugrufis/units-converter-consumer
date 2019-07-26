@@ -5,7 +5,7 @@
   <mat-grid-tile [colspan]="6">
     <mat-form-field>
       <mat-label>Select conversion type</mat-label>
-      <mat-select (selectionChange)="onSelectionChangeType()" [(value)]="selected">
+      <mat-select (selectionChange)="onSelectionChangeType()" [(value)]="selectedType">
         <mat-option *ngFor="let function of functions" [value]="function">{{function}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -13,28 +13,28 @@
   <mat-grid-tile [colspan]="4">
     <mat-form-field>
       <mat-label>From</mat-label>
-      <mat-select (selectionChange)="onSelectionChangeFrom()" [disabled]="!selected" [(value)]="fromUnit">
+      <mat-select (selectionChange)="onSelectionChangeFrom()" [disabled]="!selectedType" [(value)]="fromUnit">
         <mat-option *ngFor="let unit of units" [value]="unit.unit">{{unit.singular}} ({{unit.unit}})</mat-option>
       </mat-select>
     </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile [colspan]="2">
     <mat-form-field class="example-full-width">
-      <input type="number" (keyup)="onSelectionChangeTo($event)" [disabled]="!selected" matInput [placeholder]="'Value'"
+      <input type="number" (keyup)="onSelectionChangeTo($event)" [disabled]="!selectedType" matInput [placeholder]="'Value'"
              [value]="fromValue">
     </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile [colspan]="4">
     <mat-form-field>
       <mat-label>To</mat-label>
-      <mat-select (selectionChange)="onSelectionChangeTo()" [disabled]="!selected" [(value)]="toUnit">
+      <mat-select (selectionChange)="onSelectionChangeTo()" [disabled]="!selectedType" [(value)]="toUnit">
         <mat-option *ngFor="let unit of units" [value]="unit.unit">{{unit.singular}} ({{unit.unit}})</mat-option>
       </mat-select>
     </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile [colspan]="2">
     <mat-form-field class="example-full-width">
-      <input type="number" (keyup)="onSelectionChangeFrom($event)" [disabled]="!selected" matInput
+      <input type="number" (keyup)="onSelectionChangeFrom($event)" [disabled]="!selectedType" matInput
              [placeholder]="'Value'"
              [(value)]="toValue">
     </mat-form-field>

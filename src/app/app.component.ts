@@ -11,34 +11,29 @@ export class AppComponent implements OnInit {
   public units: any[] = [];
   public fromUnit: string;
   public toUnit: string;
-  public selected: string;
+  public selectedType: string;
   public fromValue: number;
   public toValue: number;
 
-  // Where True is for fromValue and False for toValue
-  private lastChanged = true;
-
   public onSelectionChangeType() {
-    this.units = Converter[this.selected]().list();
+    this.units = Converter[this.selectedType]().list();
     this.fromUnit = this.units[0].unit;
     this.toUnit = this.units[1].unit;
     this.fromValue = 1;
-    this.toValue = Converter[this.selected](this.fromValue).from(this.fromUnit).to(this.toUnit).value;
+    this.toValue = Converter[this.selectedType](this.fromValue).from(this.fromUnit).to(this.toUnit).value;
   }
 
   public onSelectionChangeFrom(newValue?) {
 
     if (newValue && newValue.target.value as number) {
-
       this.toValue = (newValue.target.value as number > 1) ? newValue.target.value.replace(/^0+/, '') as number : newValue.target.value as number;
     } else if (newValue && newValue.target.value === '') {
       this.toValue = 0;
     }
 
-    this.fromValue = Converter[this.selected](this.toValue).from(this.fromUnit).to(this.toUnit).value;
+    this.fromValue = Converter[this.selectedType](this.toValue).from(this.fromUnit).to(this.toUnit).value;
   }
-
-
+  
   public onSelectionChangeTo(newValue?) {
 
     if (newValue && newValue.target.value as number) {
@@ -47,7 +42,7 @@ export class AppComponent implements OnInit {
       this.fromValue = 0;
     }
 
-    this.toValue = Converter[this.selected](this.fromValue).from(this.fromUnit).to(this.toUnit).value;
+    this.toValue = Converter[this.selectedType](this.fromValue).from(this.fromUnit).to(this.toUnit).value;
   }
 
   ngOnInit(): void {
